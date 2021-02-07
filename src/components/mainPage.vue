@@ -87,12 +87,14 @@ export default {
 
 <style scoped>
 .nav-bar{
-  position:fixed;
+  position:absolute;
   width: 100%;
   bottom: 0;
-  z-index: 1000;
 }
 .main-container {
   overflow: scroll;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 </style>

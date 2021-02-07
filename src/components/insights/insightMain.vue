@@ -24,25 +24,25 @@
         </v-tab>
       </v-tabs>
       <div class="detail-view">
-        <district-insight></district-insight>
+        <district-insight v-if="tab == 'tab-1'"></district-insight>
+        <hospital-insight v-if="tab == 'tab-2'"></hospital-insight>
       </div>
   </div>
 </template>
 
 <script>
 import districtInsight from '../insights/districtInsight';
+import hospitalInsight from '../insights/hospitalInsight';
 export default {
 data:() => ({
   searchTxt:"",
   tab:null
 }),
 components:{
-  districtInsight
+  districtInsight, hospitalInsight
 },
 methods:{
-  onTabChange() {
-
-  }
+  onTabChange(){}
 }
 }
 </script>
