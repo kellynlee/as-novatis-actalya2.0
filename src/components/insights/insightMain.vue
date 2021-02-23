@@ -2,12 +2,11 @@
   <div class="insight">
     <v-tabs
       v-model="tab"
-      background-color="blue-grey lighten-3"
       class="rounded-0 insight-tab"
       centered
-      dark
+      light
       fixed-tabs
-      height="30"
+      height="48"
       icons-and-text
       @change="onTabChange">
         <v-tab href="#tab-1">
@@ -55,12 +54,14 @@ methods:{
   position: fixed;
   top: 0;
   z-index: 1000;
+  top: 56px;
 }
 .detail-view{
   position: absolute;
   width: 100%;
-  top:30px;
+  top:48px;
   height: 100%;
   overflow: scroll;
+  background-color: #EBEBEB;
 }
 </style>

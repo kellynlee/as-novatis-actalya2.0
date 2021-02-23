@@ -1,33 +1,26 @@
 <template>
   <div class="plan-page">
-    <v-expansion-panels multiple class="elevation-0">
-      <v-expansion-panel class="mb-2 elevation-0">
-        <v-expansion-panel-header class="elevation-0">
-        医院
-        </v-expansion-panel-header>
-        <v-expansion-panel-content class="elevation-0">
+    <v-expansion-panels multiple class="mb-3">
+    <paper :title="'医院'">
+      <v-progress-linear value="15" rounded height="20" color="green darken-1">
+      <strong>15%</strong>
+      </v-progress-linear>
           <v-card v-for="(hospital, index) in hospitals" :key="hospital.id" class="pa-3 mb-2" transition="fade-transition">
-            <v-row no-gutters>
+            <v-row no-gutters class="d-flex">
               <v-col cols="2">
-                <v-icon color="light-blue darken-3">mdi-hospital-building</v-icon>
+                <v-icon>mdi-hospital-building</v-icon>
               </v-col>
-              <v-col>
+              <v-col> 
                 <v-row no-gutters>
                   <div class="text-body-2">{{hospital.hospitalName}}</div>
                   <v-spacer></v-spacer>
-                  <v-chip
-                    small
-                    color="indigo"
-                    outlined
-                  >
-                    <v-avatar left>
-                      <v-icon small>mdi-tag</v-icon>
-                    </v-avatar>
-                    <span class="text-caption">{{hospital.label}}</span>
-                  </v-chip>
+                  <span class="text-caption red--text text--darken-3">{{hospital.label}}</span>
                 </v-row>
                 <div class="text-body-2 red--text text--darken-3" >{{hospital.segment}}</div>
                 <div class="text-body-2">{{hospital.description}}</div>
+              </v-col>
+              <v-col cols="1" class="align-self-center">
+                <v-icon>mdi-chevron-right</v-icon>
               </v-col>
             </v-row>
             <v-row no-gutters>
@@ -42,14 +35,9 @@
               </v-btn>
             </v-row>
           </v-card>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
-      <v-expansion-panel class="mb-2">
-        <v-expansion-panel-header>
-        医生
-        </v-expansion-panel-header>
-        <v-expansion-panel-content>
-          <v-card v-for="(doctor,index) in doctors" :key="doctor.id" class="pa-3" transition="fade-transition">
+    </paper>
+    <paper :title="'医生'">
+      <v-card v-for="(doctor,index) in doctors" :key="doctor.id" class="pa-3" transition="fade-transition">
             <v-row no-gutters>
               <v-col cols="2">
                 <v-icon color="green darken-3">mdi-doctor</v-icon>
@@ -86,13 +74,13 @@
               </v-btn>
             </v-row>
           </v-card>
-        </v-expansion-panel-content>
-      </v-expansion-panel>
+    </paper>
     </v-expansion-panels>
   </div>
 </template>
 
 <script>
+import paper from './cards/paper';
 export default {
   data: () => ({
     hospitals:[
@@ -122,6 +110,9 @@ export default {
     },
   ]
   }),
+  components:{
+    paper
+  },
   methods:{
     onConfirm(index, confirmObj) {
       confirmObj.splice(index,1)
